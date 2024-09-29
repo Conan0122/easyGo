@@ -1,0 +1,23 @@
+## Short Slogans:
+"Ride Your Way, Anytime."
+"Wheels for Every Journey."
+"Your Adventure, Your Ride."
+"Fast, Flexible, Freedom."
+"Move Freely, Rent Easily."
+"Skate, Scoot, Drive."
+"Find Your Perfect Ride."
+"Hop On and Go!"
+"For Every Road, A Ride."
+Travel Smart, Rent with Ease."
+
+## Medium-Length Slogans:
+"From Skateboards to SUVs, We’ve Got Your Ride!"
+"Whether Two Wheels or Four, Adventure Starts Here."
+"The Right Vehicle for Every Journey, Every Time."
+"Easy Rentals, Endless Possibilities—Just Choose and Go."
+"Explore More with Our Skateboards, Scooters, and Cars."
+"Your One-Stop Shop for Fun and Reliable Vehicle Rentals."
+"Hit the Road with Confidence—From Skateboards to Sedans."
+"Rent with Us and Discover Freedom on Every Wheel."
+"From Urban Streets to Open Highways, We’ve Got You Covered."
+"Find the Ride You Need for Every Trip, Every Adventure."
