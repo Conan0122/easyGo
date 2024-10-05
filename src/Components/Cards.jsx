@@ -1,6 +1,7 @@
+
 import React from 'react'
 
-function Cards({price, img}) {
+function Cards({price, img, name}) {
 
   return (
     <div className="bg-white font-Roboto rounded-lg overflow-hidden shadow-2xl xl:w-1/5 lg:w-1/4 md:w-1/3 sm:w-1/2 hover:scale-105 transition-transform duration-300 ease-in-out">
@@ -9,11 +10,11 @@ function Cards({price, img}) {
         </div>
         <div className="p-6 flex flex-col justify-center ">
             <div className="flex items-baseline"></div>
-            <h4 className="mt-2 font-semibold text-lg leading-tight truncate">Blue car</h4>
+            <h4 className="mt-2 font-semibold text-lg leading-tight truncate">{name}</h4>
 
             <div className="mt-1">
-                <span>Rs. {price}</span>
-                <span className="text-gray-600 text-sm">/-</span>
+                <span>Rs. {price}/hr</span>
+                <span className="text-gray-600 text-sm"></span>
             </div>
             <div className='flex justify-evenly py-5'>
                 <button className='bg-lightpurple-0 px-5 py-2 rounded-md font-semibold self-center'>Rent</button>
