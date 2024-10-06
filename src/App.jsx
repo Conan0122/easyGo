@@ -1,8 +1,8 @@
 import Home from './Pages/Home'
 import Categories from './Pages/Categories'
 import Contact from './Pages/Contact'
-import Login from './Pages/Login'
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
+import LoginPage from './Pages/LoginPage'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './Layout'
 import Profile from './Pages/Profile'
 
@@ -29,8 +29,8 @@ function App() {
         }
         ,
         {
-          path: "login",
-          element: <Login/>
+          path: "loginPage",
+          element: <LoginPage/>
         }
         ,
         {

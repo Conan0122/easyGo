@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react'
 import Cards from '../Components/Cards';
+import { NavLink } from 'react-router-dom';
+import ScrollToTop from '../Components/ScrollToTop';
 
 const Home = () => {
   // const {cost, setCost} = useState()
@@ -26,7 +28,10 @@ const Home = () => {
           </h1>
           <h1 className='text-xl font-light text-center tracking-widest'>Find the Ride You Need for Every Trip, Every Adventure.</h1>
 
-          <button className='w-1/3 bg-black border-2 border-black font-medium text-white mt-10 p-5 rounded-md hover:bg-white hover:text-black transition-all duration-300 ease-in-out self-center'>Explore <i className="fas fa-arrow-right ml-2"></i> </button>
+          <NavLink to='/categories' className='w-1/3 self-center'>
+            <button className='w-full bg-black border-2 border-black font-medium text-white mt-10 p-5 rounded-md hover:bg-white hover:text-black transition-all duration-300 ease-in-out self-center'>Explore<i className="fas fa-arrow-right ml-2"></i>
+            </button>
+          </NavLink>
         </div>
       </div>
 
@@ -118,7 +123,7 @@ const Home = () => {
 
       {/* Booking section */}
 
-
+      <ScrollToTop/>
     </div>
   );
 };

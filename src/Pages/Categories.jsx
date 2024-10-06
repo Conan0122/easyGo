@@ -1,6 +1,7 @@
 
 import React from "react";
 import Cards from "../Components/Cards";
+import ScrollToTop from "../Components/ScrollToTop";
 
 function Categories() {
   return (
@@ -70,6 +71,7 @@ function Categories() {
           />
         </div>
       </div>
+      <ScrollToTop/>
     </div>
   );
 }
