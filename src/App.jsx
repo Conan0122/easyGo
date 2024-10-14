@@ -1,51 +1,58 @@
-import Home from './Pages/Home'
-import Categories from './Pages/Categories'
-import Contact from './Pages/Contact'
-import LoginPage from './Pages/LoginPage'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Layout from './Layout'
-import Profile from './Pages/Profile'
+import Home from "./Pages/Home";
+import Categories from "./Pages/Categories";
+import Contact from "./Pages/Contact";
+import LoginPage from "./Pages/LoginPage";
+import {createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./Layout";
+import Profile from "./Pages/Profile";
+import DetailsCard from "./Pages/DetailsCard";
+import Order from "./Pages/Order";
 
 function App() {
-
   // Set paths for the components to show on render.
   // Layout has page layout with nav bar and then outlet and at bottom, footer.
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout/>,
+      element: <Layout />,
       children: [
         {
           path: "",
-          element: <Home/>
+          element: <Home />,
         },
         {
           path: "categories",
-          element: <Categories/>
+          element: <Categories />,
         },
         {
           path: "contact",
-          element: <Contact/>
-        }
-        ,
+          element: <Contact />,
+        },
         {
           path: "loginPage",
-          element: <LoginPage/>
-        }
-        ,
+          element: <LoginPage />,
+        },
         {
           path: "profile",
-          element: <Profile/>
-        }
-      ]
-    }
-  ])
+          element: <Profile />,
+        },
+        {
+          path: "detailCard",
+          element: <DetailsCard />,
+        },
+        {
+          path: "order",
+          element: <Order />,
+        },
+      ],
+    },
+  ]);
 
   return (
     <>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

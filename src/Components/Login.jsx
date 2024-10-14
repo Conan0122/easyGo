@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import { auth } from "../Firebase/firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
-function Login({setIsLogin}) {
+function Login({ setIsLogin }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigateTo = useNavigate()
+
+  const loginUser = async () => {
+    await signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        setEmail("");
+        setPassword("");
+        alert("Login successful!!");
+        navigateTo('/')
+      })
+      .catch(() => {
+        setPassword("");
+        alert("Login unsuccessful!!");
+      });
+  };
+  
   return (
     <div className="w-full p-8 lg:w-1/2">
       <h2 className="font-Mont text-3xl font-extrabold text-center cursor-default">
@@ -8,7 +29,7 @@ function Login({setIsLogin}) {
       </h2>
       <a
         href="#"
-        class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
+        className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
       >
         <div className="px-4 py-3 text-black text-xl">
           <i className="fa-brands fa-google"></i>
@@ -32,6 +53,8 @@ function Login({setIsLogin}) {
           className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
           type="email"
           required
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
         />
       </div>
       <div className="mt-4">
@@ -44,18 +67,25 @@ function Login({setIsLogin}) {
           className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
           type="password"
           required
-          min={5}
+          min={7}
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
         />
       </div>
       <div className="mt-8">
-        <button className="bg-mypurple-0 text-black font-bold py-2 px-4 w-full rounded hover:bg-mypurpledark-0">
+        <button
+          className="bg-mypurple-0 text-black font-bold py-2 px-4 w-full rounded hover:bg-mypurpledark-0"
+          onClick={loginUser}>
           Login
         </button>
       </div>
       <div className="mt-4 flex items-center justify-between">
         <span className="border-b w-1/5 md:w-1/4"></span>
-        <button className="text-xs text-gray-500 uppercase"
-        onClick={()=>setIsLogin(false)}> {/* Passing function because onclick expects callback function. */}
+        <button
+          className="text-xs text-gray-500 uppercase"
+          onClick={() => setIsLogin(false)}>
+          {" "}
+          {/* Passing function because onclick expects callback function. */}
           Don't have an account?
         </button>
         <span className="border-b w-1/5 md:w-1/4"></span>

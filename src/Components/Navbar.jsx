@@ -12,23 +12,57 @@ function Navbar() {
 
         <div className="flex justify-end items-center space-x-28">
           <li className="hover:scale-110 transition-transform duration-300 ease-in-out">
-            <NavLink to='/' className={({isActive})=>`${isActive? "border-b-2 p-1 border-black": ""} hover:border-b-2 p-1 hover:border-purple-500`}>Home</NavLink>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `${
+                  isActive ? "border-b-2 p-1 border-black" : ""
+                } hover:border-b-2 p-1 hover:border-purple-500`
+              }
+            >
+              Home
+            </NavLink>
           </li>
           <li className="hover:scale-110 transition-transform duration-300 ease-in-out">
-            <NavLink to="/categories" className={({isActive})=>`${isActive? "border-b-2 p-1 border-black": ""} hover:border-b-2 p-1 hover:border-purple-500`}>Categories</NavLink>
+            <NavLink
+              to="/categories"
+              className={({ isActive }) =>
+                `${
+                  isActive ? "border-b-2 p-1 border-black" : ""
+                } hover:border-b-2 p-1 hover:border-purple-500`
+              }
+            >
+              Categories
+            </NavLink>
           </li>
           <li className="hover:scale-110 transition-transform duration-300 ease-in-out">
-            <NavLink to="/contact" className={({isActive})=>`${isActive? "border-b-2 p-1 border-black": ""} hover:border-b-2 p-1 hover:border-purple-500`}>Contact</NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `${
+                  isActive ? "border-b-2 p-1 border-black" : ""
+                } hover:border-b-2 p-1 hover:border-purple-500`
+              }
+            >
+              Contact
+            </NavLink>
           </li>
-          <li>
+          <li className="space-x-6">
             <NavLink to="/loginPage">
               <button className="bg-mypurple-0 rounded-lg px-5 py-2 hover:bg-mypurpledark-0 hover:rounded-2xl transition-all duration-300 ease-in-out">
-              Login
+                Login
               </button>
             </NavLink>
-            <button className="bg-black text-white rounded-full mx-5 px-5 py-3 border-2 border-black hover:bg-white hover:text-black transition-all duration-300 ease-in-out">
-              <NavLink to="/profile"><i className="fa-solid fa-user"></i></NavLink>
-            </button>
+            <NavLink to="/detailCard">
+              <button className="bg-mypurple-0 rounded-lg px-5 py-2 hover:bg-mypurpledark-0 hover:rounded-2xl transition-all duration-300 ease-in-out">
+                List my car ➕
+              </button>
+            </NavLink>
+            {/* <NavLink to="/profile">
+              <button className="bg-black text-white rounded-full mx-5 px-5 py-3 border-2 border-black hover:bg-white hover:text-black transition-all duration-300 ease-in-out">
+                <i className="fa-solid fa-user"></i>
+              </button>
+            </NavLink> */}
           </li>
         </div>
       </ul>

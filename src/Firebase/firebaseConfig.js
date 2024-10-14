@@ -1,7 +1,10 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage';
 
 // Web app's Firebase configuration
+// NOTE: [IMPORTANT] Save these in .env file.
 const firebaseConfig = {
     apiKey: "AIzaSyBNXfzL8qQGqPshQO-t_gHJ5BPHp4AN34M",
     authDomain: "easygo-9e917.firebaseapp.com",
@@ -13,6 +16,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const auth = getAuth(app);      // Export auth from this file
+const db = getFirestore(app);   // Export db from this file
+const storage = getStorage(app);
 
-export { auth };
+export { auth, db, storage };

@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase/firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 function Signup({ setIsLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigateTo = useNavigate();
 
   const registerUser = async () => {
     await createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
         setEmail("");
         setPassword("");
-        alert("Login Successfull!");
+        alert("Account Created Successfully!");
+        navigateTo('/')
       })
       .catch(() => {
         setPassword("");
-        alert("Login Unsuccessfull!!");
+        alert("Account creation Failed!!");
       });
   };
 
@@ -34,7 +37,7 @@ function Signup({ setIsLogin }) {
       </h2>
       <a
         href="#"
-        class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
+        className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
       >
         <div className="px-4 py-3 text-black text-xl">
           <i className="fa-brands fa-google"></i>
@@ -80,8 +83,7 @@ function Signup({ setIsLogin }) {
       <div className="mt-8">
         <button
           className="bg-mypurple-0 text-black font-bold py-2 px-4 w-full rounded hover:bg-mypurpledark-0"
-          onClick={registerUser}
-        >
+          onClick={registerUser}>
           Register
         </button>
       </div>
