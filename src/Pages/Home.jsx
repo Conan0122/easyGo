@@ -70,11 +70,14 @@ const Home = () => {
       </div>
 
       {/* Trending section */}
-      <div id="trending" className="w-full h-auto font-Roboto mt-10">
+      <div
+        id="trending"
+        className="w-full h-auto font-Roboto mt-10"
+      >
         <div className="w-full flex justify-start px-16 py-8">
           <hr className="font-extrabold text-black" />
           <h1 className="capitalize text-5xl font-light tracking-wider border-b-2 border-black pb-5">
-            trending
+            Trending
           </h1>
         </div>
 
@@ -85,17 +88,19 @@ const Home = () => {
             <span className="loading loading-lg loading-ring"></span>{" "}
           </div>
         ) : (
-          <div className="flex justify-center gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-16">
             {vehicles.length === 0 ? (
               <p>No vehicles available.</p> // Render a message when there are no vehicles
             ) : (
               vehicles.map((vehicle) => (
-                <Cards
-                  key={vehicle.id} // Make sure to include a unique key
-                  name={vehicle.vehicleModel}
-                  price={vehicle.rentCost}
-                  img={vehicle.vehicleImage}
-                />
+                <div key={vehicle.id} className="flex justify-center">
+                  <Cards
+                    name={vehicle.vehicleModel}
+                    price={vehicle.rentCost}
+                    img={vehicle.vehicleImage}
+                    className="w-72 h-80 p-4 bg-white shadow-lg rounded-lg flex items-center justify-center"
+                  />
+                </div>
               ))
             )}
           </div>
@@ -118,7 +123,7 @@ const Home = () => {
             <span className="loading loading-lg loading-ring"></span>{" "}
           </div>
         ) : (
-          <div className="flex justify-center gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-16">
             {vehicles.length === 0 ? (
               <p>No vehicles available.</p> // Render a message when there are no vehicles
             ) : (
@@ -151,18 +156,21 @@ const Home = () => {
             <span className="loading loading-lg loading-ring"></span>{" "}
           </div>
         ) : (
-          <div className="flex justify-center gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-16">
             {vehicles.length === 0 ? (
               <p>No vehicles available.</p> // Render a message when there are no vehicles
             ) : (
-              vehicles.map((vehicle) => (
-                <Cards
-                  key={vehicle.id} // Make sure to include a unique key
-                  name={vehicle.vehicleModel}
-                  price={vehicle.rentCost}
-                  img={vehicle.vehicleImage}
-                />
-              ))
+              vehicles.map(
+                (vehicle) =>
+                  vehicle.vehicleType === "two-wheeler" && (
+                    <Cards
+                      key={vehicle.id} // Make sure to include a unique key
+                      name={vehicle.vehicleModel}
+                      price={vehicle.rentCost}
+                      img={vehicle.vehicleImage}
+                    />
+                  )
+              )
             )}
           </div>
         )}
@@ -184,18 +192,21 @@ const Home = () => {
             <span className="loading loading-lg loading-ring"></span>{" "}
           </div>
         ) : (
-          <div className="flex justify-center gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-16">
             {vehicles.length === 0 ? (
               <p>No vehicles available.</p> // Render a message when there are no vehicles
             ) : (
-              vehicles.map((vehicle) => (
-                <Cards
-                  key={vehicle.id} // Make sure to include a unique key
-                  name={vehicle.vehicleModel}
-                  price={vehicle.rentCost}
-                  img={vehicle.vehicleImage}
-                />
-              ))
+              vehicles.map(
+                (vehicle) =>
+                  vehicle.vehicleType === "four-wheeler" && (
+                    <Cards
+                      key={vehicle.id} // Make sure to include a unique key
+                      name={vehicle.vehicleModel}
+                      price={vehicle.rentCost}
+                      img={vehicle.vehicleImage}
+                    />
+                  )
+              )
             )}
           </div>
         )}
@@ -217,18 +228,21 @@ const Home = () => {
             <span className="loading loading-lg loading-ring"></span>{" "}
           </div>
         ) : (
-          <div className="flex justify-center gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-16">
             {vehicles.length === 0 ? (
               <p>No vehicles available.</p> // Render a message when there are no vehicles
             ) : (
-              vehicles.map((vehicle) => (
-                <Cards
-                  key={vehicle.id} // Make sure to include a unique key
-                  name={vehicle.vehicleModel}
-                  price={vehicle.rentCost}
-                  img={vehicle.vehicleImage}
-                />
-              ))
+              vehicles.map(
+                (vehicle) =>
+                  vehicle.vehicleType === "skateboards" && (
+                    <Cards
+                      key={vehicle.id} // Make sure to include a unique key
+                      name={vehicle.vehicleModel}
+                      price={vehicle.rentCost}
+                      img={vehicle.vehicleImage}
+                    />
+                  )
+              )
             )}
           </div>
         )}

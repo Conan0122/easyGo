@@ -1,10 +1,14 @@
+// Reminder: Change this name to lendCar
 import React, { useState } from "react";
 import { auth, db, storage } from "../Firebase/firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 const DetailsCard = () => {
+  const nav = useNavigate();
+
   const [vehicleDetails, setVehicleDetails] = useState({
     ownerName: "",
     ownerEmail: "",
@@ -55,8 +59,11 @@ const DetailsCard = () => {
         vehicleType: vehicleDetails.vehicleType,
       });
       alert("Vehicle details added");
+      nav('/')
     } catch (error) {
-      alert("Error adding vehicle!!");
+      // alert("Error adding vehicle!!");
+      console.error("Error adding vehicle:", error);
+      alert("Error: " + error.message);
     } finally {
       setUploading(false);
     }
@@ -77,6 +84,7 @@ const DetailsCard = () => {
             onChange={handleVehicleChange}
             placeholder="Owner Name"
             className="w-full p-2 border border-gray-300 rounded mb-4"
+            required
           />
           <input
             type="email"
@@ -85,6 +93,7 @@ const DetailsCard = () => {
             onChange={handleVehicleChange}
             placeholder="Owner Email"
             className="w-full p-2 border border-gray-300 rounded mb-2"
+            required
           />
           <input
             type="tel"
@@ -93,6 +102,7 @@ const DetailsCard = () => {
             onChange={handleVehicleChange}
             placeholder="Owner Phone"
             className="w-full p-2 border border-gray-300 rounded mb-2"
+            required
           />
           <h3 className="text-lg font-semibold mb-2">Car Details</h3>
           <input
@@ -111,6 +121,7 @@ const DetailsCard = () => {
             onChange={handleVehicleChange}
             placeholder="Vehicle Year"
             className="w-full p-2 border border-gray-300 rounded mb-2"
+            required
           />
           <input
             type="text"
@@ -133,6 +144,7 @@ const DetailsCard = () => {
             }}
             placeholder="Vehicle Image"
             className="w-full p-2 border border-gray-300 rounded mb-4"
+            required
           />
           <label>Vehicle Rented? </label>
           <input

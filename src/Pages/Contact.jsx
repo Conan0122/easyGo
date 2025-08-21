@@ -1,16 +1,111 @@
-import React from 'react'
+import { data } from "autoprefixer";
+import React, { useState } from "react";
 
-function Contact() {
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Message sent successfully!");
+    setFormData({
+      name: "", email:"", message: "",
+    });
+  };
+
   return (
-    <div className='w-full h-screen flex justify-center items-center'>
-      <h1>Contact us</h1>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-5">
+      <div className="w-full max-w-lg p-8 bg-white shadow-lg rounded-lg">
+        <h2 className="text-3xl font-bold text-center text-purple-800">
+          Contact Us
+        </h2>
+        <p className="text-gray-600 text-center mb-8">
+          Got a question? We'd love to hear from you. Send us a message and
+          we'll respond as soon as possible.
+        </p>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label
+              className="block text-gray-700 font-semibold mb-2"
+              htmlFor="name"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              className="block text-gray-700 font-semibold mb-2"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              className="block text-gray-700 font-semibold mb-2"
+              htmlFor="message"
+            >
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-mypurple-0"
+              placeholder="Enter your message"
+              rows="4"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-3 bg-mypurple-0 text-black hover:bg-mypurpledark-0 font-bold rounded-lg transition duration-300"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
-
-
+export default Contact;
 
 ////////// Experiment code//////////
 // import React, { useState, useEffect } from 'react';

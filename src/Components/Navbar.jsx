@@ -1,7 +1,28 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, {useContext} from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../Firebase/firebaseConfig";
 
 function Navbar() {
+  const {user, isLoggedIn} = useContext(AuthContext)  // get data from AuthContext(which is available globally)
+  const nav = useNavigate();
+
+  console.log("isLoggedIn: ", isLoggedIn);
+  console.log("user: ", user);
+
+  const handleLogout = async () => {
+    // Logout logic
+    try{
+      await signOut(auth);  // User signout
+      nav('/')
+      console.log(`Logged out----`);
+    }
+    catch (err){
+      console.log(`Logout failed: ${err}`);
+    }
+  };
+
   return (
     <nav className="w-full font-Roboto font-medium py-5 bg-white sticky top-0 z-10 text-black flex flex-col justify-center rounded-b-2xl shadow-lg">
       <ul className="flex justify-between items-center mx-28">
@@ -47,17 +68,30 @@ function Navbar() {
               Contact
             </NavLink>
           </li>
+
           <li className="space-x-6">
-            <NavLink to="/loginPage">
-              <button className="bg-mypurple-0 rounded-lg px-5 py-2 hover:bg-mypurpledark-0 hover:rounded-2xl transition-all duration-300 ease-in-out">
-                Login
-              </button>
-            </NavLink>
-            <NavLink to="/detailCard">
-              <button className="bg-mypurple-0 rounded-lg px-5 py-2 hover:bg-mypurpledark-0 hover:rounded-2xl transition-all duration-300 ease-in-out">
-                List my car ➕
-              </button>
-            </NavLink>
+            { isLoggedIn? (
+              <>
+                <button className="bg-mypurple-0 rounded-lg px-5 py-2 hover:bg-mypurpledark-0 hover:rounded-2xl transition-all duration-300 ease-in-out"
+                onClick={handleLogout}>
+                  Logout
+                </button>
+                <NavLink to="/detailCard">
+                  <button className="bg-mypurple-0 rounded-lg px-5 py-2 hover:bg-mypurpledark-0 hover:rounded-2xl transition-all duration-300 ease-in-out">
+                    List my car ➕
+                  </button>
+                </NavLink>
+              </>
+            ):
+            <>
+              <NavLink to="/loginPage">
+                <button className="bg-mypurple-0 rounded-lg px-5 py-2 hover:bg-mypurpledark-0 hover:rounded-2xl transition-all duration-300 ease-in-out">
+                  Login
+                </button>
+              </NavLink>
+            </>
+            }
+
             {/* <NavLink to="/profile">
               <button className="bg-black text-white rounded-full mx-5 px-5 py-3 border-2 border-black hover:bg-white hover:text-black transition-all duration-300 ease-in-out">
                 <i className="fa-solid fa-user"></i>
